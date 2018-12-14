@@ -52,3 +52,12 @@ h1 {
 	top: 100px;
 	right: 100px;
 }
+
+#head,
+#body,
+#armR,
+#armL,
+#legR,
+#legL {
+	visibility: hidden;
+}

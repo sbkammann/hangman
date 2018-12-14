@@ -27,6 +27,9 @@ for (let i = 65; i < 91; i++){
 
 buttonBox.addEventListener('click', check);
 
+// hangman img ids
+const imgArr = ["head", "body", "armR", "armL", "legR", "legL"];
+let wrong = 0;
 //checks if the selected character button matches a letter in the word
 function check() {
   let isMatch = false;
@@ -37,7 +40,8 @@ function check() {
       isMatch = true;
     }
     if ((i === charArr.length -1) && !isMatch){
-      console.log('wrong');
+      document.getElementById(imgArr[wrong]).style.visibility = "visible";
+      wrong++;
     }
   }
 }
