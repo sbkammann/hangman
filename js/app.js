@@ -3,6 +3,7 @@ const wordBox = document.getElementById('wordBox');
 const buttonBox = document.getElementById('buttonBox');
 const rowOne = document.getElementById('rowOne');
 const rowTwo = document.getElementById('rowTwo');
+const message = document.getElementById('message');
 //random number generator to choose word out of wordbank
 let rand = 0 //change to random number later
 const charArr = wordBank[rand].split("");
@@ -30,18 +31,32 @@ buttonBox.addEventListener('click', check);
 // hangman img ids
 const imgArr = ["head", "body", "armR", "armL", "legR", "legL"];
 let wrong = 0;
+let correct =0;
+let isGameOver = false;
 //checks if the selected character button matches a letter in the word
 function check() {
-  let isMatch = false;
-  for (let i= 0; i < charArr.length; i++){
-    if(event.target.getAttribute('class')[0].toUpperCase() === charArr[i].toUpperCase()){
-      console.log(document.getElementsByClassName(`char${i}`)[0]);
-      document.getElementsByClassName(`char${i}`)[0].textContent = charArr[i].toUpperCase();
-      isMatch = true;
-    }
-    if ((i === charArr.length -1) && !isMatch){
-      document.getElementById(imgArr[wrong]).style.visibility = "visible";
-      wrong++;
+  if (!isGameOver){
+    let isMatch = false;
+    for (let i= 0; i < charArr.length; i++){
+      if(event.target.getAttribute('class')[0].toUpperCase() === charArr[i].toUpperCase()){
+        console.log(document.getElementsByClassName(`char${i}`)[0]);
+        document.getElementsByClassName(`char${i}`)[0].textContent = charArr[i].toUpperCase();
+        isMatch = true;
+        correct++;
+        if (correct === charArr.length){
+          isGameOver = true;
+          message.textContent = "You win!";
+        }
+      }
+      if ((i === charArr.length -1) && !isMatch){
+        document.getElementById(imgArr[wrong]).style.visibility = "visible";
+        wrong++;
+        if (wrong ===6){
+          isGameOver = true;
+          message.textContent = "Game Over";
+          //toggle class
+        }
+      }
     }
   }
 }
