@@ -36,10 +36,12 @@ let isGameOver = false;
 const newGame = document.getElementById('newGame');
 //checks if the selected character button matches a letter in the word
 function check() {
-  if (!isGameOver){
+  if (!isGameOver &&
+      document.getElementsByClassName(event.target.getAttribute('class')[0])[0].style.backgroundColor !=="black"
+      ){
     let isMatch = false;
     for (let i= 0; i < charArr.length; i++){
-      document.getElementsByClassName(event.target.getAttribute('class')[0])[0].style.backgroundColor ="black"
+      document.getElementsByClassName(event.target.getAttribute('class')[0])[0].style.backgroundColor ="black";
       //checks if player guess is correct
       if(event.target.getAttribute('class')[0].toUpperCase() === charArr[i].toUpperCase()){
         console.log(document.getElementsByClassName(`char${i}`)[0]);
@@ -69,5 +71,5 @@ function check() {
   }
 }
 
-newGame.addEventListener('click', () => {location.reload()}); 
+newGame.addEventListener('click', () => {location.reload()});
 //window.innerWidth
