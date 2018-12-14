@@ -33,6 +33,7 @@ const imgArr = ["head", "body", "armR", "armL", "legR", "legL"];
 let wrong = 0;
 let correct =0;
 let isGameOver = false;
+const newGame = document.getElementById('newGame');
 //checks if the selected character button matches a letter in the word
 function check() {
   if (!isGameOver){
@@ -50,6 +51,7 @@ function check() {
         if (correct === charArr.length){
           isGameOver = true;
           message.textContent = "You win!";
+          newGame.style.visibility = "visible"
         }
       }
       // checks to if guess is wrong
@@ -59,10 +61,13 @@ function check() {
         if (wrong ===6){
           isGameOver = true;
           message.textContent = "Game Over";
+          newGame.style.visibility = "visible"
           //toggle class
         }
       }
     }
   }
 }
+
+newGame.addEventListener('click', () => {location.reload()}); 
 //window.innerWidth
