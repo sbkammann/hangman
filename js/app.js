@@ -38,16 +38,21 @@ function check() {
   if (!isGameOver){
     let isMatch = false;
     for (let i= 0; i < charArr.length; i++){
+      document.getElementsByClassName(event.target.getAttribute('class')[0])[0].style.backgroundColor ="black"
+      //checks if player guess is correct
       if(event.target.getAttribute('class')[0].toUpperCase() === charArr[i].toUpperCase()){
         console.log(document.getElementsByClassName(`char${i}`)[0]);
         document.getElementsByClassName(`char${i}`)[0].textContent = charArr[i].toUpperCase();
+
         isMatch = true;
         correct++;
+        //displays message once all letters have been guessed
         if (correct === charArr.length){
           isGameOver = true;
           message.textContent = "You win!";
         }
       }
+      // checks to if guess is wrong
       if ((i === charArr.length -1) && !isMatch){
         document.getElementById(imgArr[wrong]).style.visibility = "visible";
         wrong++;
