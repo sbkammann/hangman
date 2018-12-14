@@ -72,4 +72,3 @@ function check() {
 }
 
 newGame.addEventListener('click', () => {location.reload()});
-//window.innerWidth

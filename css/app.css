@@ -5,6 +5,7 @@ h1 {
 }
 
 #wordBox{
+	margin-left: 15px;
   display: flex;
   position: absolute;
   top: 500px;
@@ -18,6 +19,7 @@ h1 {
 	font-size: 80px;
 }
 #buttonBox{
+		margin-left: 15px;
     position: absolute;
     bottom: 10px;
     border: 5px solid black;
